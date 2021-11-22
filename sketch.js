@@ -37,7 +37,14 @@ function getData(word) {
 
 function draw() {
   Promise.all(promiseArray)
-    .then((values) => values.join(" ").toLowerCase())
-    .then((values) => text(values, height / 2 - 100, width / 2 - 150, 200, 400))
+    .then((values) => text(format(values), height / 2 - 100, width / 2 - 150, 200, 400))
     .catch((err) => console.log(err));
+}
+
+function format(values) {
+  return values.join(" ")
+               .toLowerCase()                           // lowercase all
+               .replace(/^\w/, (c) => c.toUpperCase())  // capitalize first word
+               .replace(/\bi\b/g, "I")                  // find lowercase i's and cap
+               + ".";                                   // add full stop
 }
