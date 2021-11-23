@@ -27,9 +27,9 @@ function getData(word) {
       .then((data) => data[0].meanings[0].definitions[0].synonyms[0])
       .then((res) => {
         if (res) {
-          return res;
+          return res;   // synonym is found
         } else {
-          return word;
+          return word;  // synonym is not found
         }
       })
   );
